@@ -10,14 +10,8 @@ require('packer').startup(function(use)
   -- Add nvim-lspconfig
   use 'neovim/nvim-lspconfig'
 
-  -- Add nvim-cmp for auto-completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip'
+  -- COC
+  use {'neoclide/coc.nvim', branch = 'release'}
 
   -- Add telescope.nvim
   use {
@@ -25,10 +19,17 @@ require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Git
+  use 'dinhhuy258/git.nvim'
+
   -- Add the kanagawa.nvim theme
   use 'rebelot/kanagawa.nvim'
 end)
 
+
+-----------------------------------------------------------------------------------------------------------------
+-------------------------------------- PLUGINS CONFIGURATION ----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
 -- Require the nvim-lspconfig plugin
 local nvim_lsp = require('lspconfig')
 
@@ -47,53 +48,20 @@ nvim_lsp.gopls.setup{
   },
 }
 
--- Setup nvim-cmp.
-local cmp = require'cmp'
+-------------------------------------- COC CONFIG ----------------------------------------------------
+vim.cmd([[
+  " Use coc.nvim for LSP
+  let g:coc_global_extensions = ['coc-json', 'coc-go']
 
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-  })
-})
+  " Keybindings for coc.nvim
+  inoremap <silent><expr> <C-Space> coc#refresh()
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+]])
 
--- Use buffer source for `/`.
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':'.
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['gopls'].setup {
-  capabilities = capabilities
-}
-
+-------------------------------------- TELESCOPLE CONFIG ----------------------------------------------------
 -- Load and configure telescope
 require('telescope').setup{
   defaults = {
@@ -126,9 +94,9 @@ require('telescope').setup{
   }
 }
 
--- Keybinding for live grep
-vim.api.nvim_set_keymap('n', '<leader>lg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true, silent = true })
+require('git').setup({})
 
+-------------------------------------- THEME CONFIG ----------------------------------------------------
 -- Load and configure the kanagawa theme
 require('kanagawa').setup({
   commentStyle = { italic = false },
@@ -139,5 +107,6 @@ require('kanagawa').setup({
 -- Apply the theme
 vim.cmd('colorscheme kanagawa')
 
+-------------------------------------- BUILT-IN CONFIG ----------------------------------------------------
 require('settings')
 require('keymaps')
