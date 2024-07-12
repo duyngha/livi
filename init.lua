@@ -22,6 +22,12 @@ require('packer').startup(function(use)
   -- Git
   use 'dinhhuy258/git.nvim'
 
+  -- For status bar at bottom
+  use {
+    "nvim-lualine/lualine.nvim",
+    require = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   -- Add the kanagawa.nvim theme
   use 'rebelot/kanagawa.nvim'
 end)
@@ -95,6 +101,10 @@ require('telescope').setup{
 }
 
 require('git').setup({})
+
+require('lualine').setup({
+  theme = 'kanagawa'
+})
 
 -------------------------------------- THEME CONFIG ----------------------------------------------------
 -- Load and configure the kanagawa theme
