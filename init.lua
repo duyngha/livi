@@ -28,10 +28,17 @@ require('packer').startup(function(use)
     require = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- Add nvim-tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
+
   -- Add the kanagawa.nvim theme
   use 'rebelot/kanagawa.nvim'
 end)
-
 
 -----------------------------------------------------------------------------------------------------------------
 -------------------------------------- PLUGINS CONFIGURATION ----------------------------------------------------
@@ -104,6 +111,22 @@ require('git').setup({})
 
 require('lualine').setup({
   theme = 'kanagawa'
+})
+
+-------------------------------------- FILE EXPLORER CONFIG ----------------------------------------------------
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
 })
 
 -------------------------------------- THEME CONFIG ----------------------------------------------------

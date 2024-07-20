@@ -34,3 +34,7 @@ vim.api.nvim_set_keymap('n', '<leader>lg', "<cmd>lua require('telescope.builtin'
 
 ------------------------------ DIAGNOSTIC --------------------------------------------
 
+------------------------------ FILE EXPLORER --------------------------------------------
+-- Map <leader>e to :NvimTreeOpen
+vim.api.nvim_set_keymap('n', '<leader>b', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>B', ':NvimTreeClose<CR>', { noremap = true, silent = true })
