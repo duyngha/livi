@@ -36,6 +36,9 @@ require('packer').startup(function(use)
     },
   }
 
+  -- Toggle Term
+  use {"akinsho/toggleterm.nvim", tag = '*'}
+
   -- Add the kanagawa.nvim theme
   use 'rebelot/kanagawa.nvim'
 end)
@@ -132,6 +135,10 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
+})
+
+require("toggleterm").setup({
+  direction = 'float'
 })
 
 -------------------------------------- THEME CONFIG ----------------------------------------------------
