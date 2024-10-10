@@ -15,12 +15,6 @@ vim.api.nvim_set_keymap('n', '<leader>tt', ':term<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
 ------------------------------ END TERMINAL --------------------------------------------
 
------------------------------- TOGGLE TERM --------------------------------------------
--- Key mappings for ToggleTerm
-vim.api.nvim_set_keymap('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
------------------------------- #END TOGGLE TERM ---------------------------------------
-
 ------------------------------ WINDOW --------------------------------------------
 -- Close terminal window (horizontal or vertical split)
 vim.api.nvim_set_keymap('t', '<leader>tc', '<C-\\><C-n>:q<CR>', { noremap = true, silent = true })
