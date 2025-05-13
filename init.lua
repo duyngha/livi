@@ -138,11 +138,11 @@ require("nvim-tree").setup({
 })
 
 -------------------------------------- TOGGLETERM CONFIG ----------------------------------------------------
-require("toggleterm").setup({
-  direction = 'float',
-  open_mapping = [[<C-m>]],  -- Automatically bind <C-m> for opening
-  start_in_insert = true
-})
+-- require("toggleterm").setup({
+--   direction = 'float',
+--   open_mapping = [[<C-m>]],  -- Automatically bind <C-m> for opening
+--   start_in_insert = true
+-- })
 
 -------------------------------------- THEME CONFIG ----------------------------------------------------
 -- Load and configure the kanagawa theme

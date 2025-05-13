@@ -3,16 +3,16 @@
 -- Enter terminal mode from normal mode: Press i in normal mode while in a terminal buffer.
 
 -- Open terminal in horizontal split
-vim.api.nvim_set_keymap('n', '<leader>th', ':split | term<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>th', ':split | term<CR>', { noremap = true, silent = true })
 
--- Open terminal in vertical split
-vim.api.nvim_set_keymap('n', '<leader>tv', ':vsplit | term<CR>', { noremap = true, silent = true })
+-- -- Open terminal in vertical split
+-- vim.api.nvim_set_keymap('n', '<leader>tv', ':vsplit | term<CR>', { noremap = true, silent = true })
 
--- Open terminal in current window
-vim.api.nvim_set_keymap('n', '<leader>tt', ':term<CR>', { noremap = true, silent = true })
+-- -- Open terminal in current window
+-- vim.api.nvim_set_keymap('n', '<leader>tt', ':term<CR>', { noremap = true, silent = true })
 
--- Close any window in normal mode
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
+-- -- Close any window in normal mode
+-- vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
 ------------------------------ END TERMINAL --------------------------------------------
 
 ------------------------------ WINDOW --------------------------------------------
