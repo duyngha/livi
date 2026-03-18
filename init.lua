@@ -7,9 +7,6 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Add nvim-lspconfig
-  use 'neovim/nvim-lspconfig'
-
   -- COC
   use {'neoclide/coc.nvim', branch = 'release'}
 
@@ -46,14 +43,11 @@ end)
 -----------------------------------------------------------------------------------------------------------------
 -------------------------------------- PLUGINS CONFIGURATION ----------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
--- Require the nvim-lspconfig plugin
-local nvim_lsp = require('lspconfig')
-
 -- Configure the Go language server
-nvim_lsp.gopls.setup{
+vim.lsp.config('gopls', {
   cmd = {"gopls"},
   filetypes = {"go", "gomod"},
-  root_dir = nvim_lsp.util.root_pattern("go.work", "go.mod", ".git"),
+  root_markers = {"go.work", "go.mod", ".git"},
   settings = {
     gopls = {
       analyses = {
@@ -62,7 +56,9 @@ nvim_lsp.gopls.setup{
       staticcheck = true,
     },
   },
-}
+})
+
+vim.lsp.enable('gopls')
 
 -------------------------------------- COC CONFIG ----------------------------------------------------
 vim.cmd([[
