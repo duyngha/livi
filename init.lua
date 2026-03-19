@@ -22,7 +22,7 @@ require('packer').startup(function(use)
   -- For status bar at bottom
   use {
     "nvim-lualine/lualine.nvim",
-    require = { 'kyazdani42/nvim-web-devicons', opt = true }
+    require = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
   -- Add nvim-tree
@@ -58,7 +58,6 @@ vim.lsp.config('gopls', {
   },
 })
 
-vim.lsp.enable('gopls')
 
 -------------------------------------- COC CONFIG ----------------------------------------------------
 vim.cmd([[
@@ -71,6 +70,9 @@ vim.cmd([[
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
 ]])
 
 -------------------------------------- TELESCOPLE CONFIG ----------------------------------------------------

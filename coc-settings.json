@@ -2,19 +2,8 @@
   "snippets.ultisnips.pythonPrompt": false,
   "suggest.autoTrigger": "always",
   "diagnostic.enable": true,
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": [
-        "go.mod"
-      ],
-      "filetypes": [
-        "go"
-      ],
-      "initializationOptions": {
-        "usePlaceholders": true
-      }
-    }
+  "go.goplsOptions": {
+    "usePlaceholders": true
   },
   "coc.preferences.formatOnSaveFiletypes": [
     "go"
