@@ -1,11 +1,26 @@
 ## Installation
-### Install Packer
+
+## Presequisites
+### Node
+```bash
+brew install node@22
+```
+
+### Packer
 ```
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
 ```
 
+Then,
+```
+:ParkerSync
+```
 
+### ripgrep
+```bash
+brew install ripgrep
+```
 
 ## Key Mapping
 ### Terminal
