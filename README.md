@@ -24,7 +24,9 @@ brew install ripgrep
 
 ## Key Mapping
 ### Terminal
-- Opening: <kbd>Ctrl+t</kbd>
+- Toggle floating terminal: <kbd>\\+tt</kbd> or <kbd>Leader+tt</kbd>
+  - Opens a centered floating terminal over the current window and drops into insert mode. Press again to hide it (the shell session persists).
+  - Exit terminal mode to normal mode with <kbd>Ctrl+\\</kbd> <kbd>Ctrl+n</kbd>.
 
 ### File explorer
 - Opening: <kbd>\\+b</kbd> or <kbd>Leader+b</kbd>
