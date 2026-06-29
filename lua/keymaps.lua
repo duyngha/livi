@@ -64,6 +64,8 @@ vim.api.nvim_set_keymap('n', '<leader>lg', "<cmd>lua require('telescope.builtin'
 ------------------------------ DIAGNOSTIC --------------------------------------------
 
 ------------------------------ FILE EXPLORER --------------------------------------------
--- Map <leader>e to :NvimTreeOpen
-vim.api.nvim_set_keymap('n', '<leader>b', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>B', ':NvimTreeClose<CR>', { noremap = true, silent = true })
+-- <leader>b opens/focuses the file explorer, <leader>B closes it.
+-- The <cmd> form runs as a clean command in any mode, so the keys can never
+-- fall through to a search or normal-mode motion.
+vim.keymap.set('n', '<leader>b', '<cmd>NvimTreeToggle<CR>', { noremap = true, silent = true, desc = 'Toggle file explorer' })
+vim.keymap.set('n', '<leader>B', '<cmd>NvimTreeClose<CR>', { noremap = true, silent = true, desc = 'Close file explorer' })
